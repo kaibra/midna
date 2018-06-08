@@ -35,6 +35,13 @@ compileTestKotlin {
 	}
 }
 
+kotlin {
+	experimental {
+		coroutines "enable"
+	}
+}
+
+
 repositories {
 	mavenCentral()
 }
@@ -52,6 +59,7 @@ task buildClient(type: Exec) {
 }
 
 dependencies {
+	compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.0'
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -60,3 +68,4 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('io.projectreactor:reactor-test')
 }
+
